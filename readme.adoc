@@ -1,0 +1,60 @@
+= Scala Academy Exam Challange 1
+
+*The content of the task:*
+
+-Write a Spark application that reads records from a Kafka topic.
+
+-Reads the data from the topic
+
+-Parses the JSONs
+
+-Surname to upper case letters
+
+-Sum cats and dogs fields and write the result to the new field “animals”.
+
+-The result should be written as a parquet file in which every record consists of 3 columns: name (String), surname (String), animals (Integer).
+
+
+
+:library: Asciidoctor
+:idprefix:
+:numbered:
+:imagesdir: images
+:experimental:
+:toc: preamble
+:toc-title: pass:[<h3>Table od contents</h3>]
+ifdef::env-github[]
+:note-caption: :information_source:
+:tip-caption: :bulb:
+endif::[]
+
+*Dependencies*
+
+To run this app you need IDE(i use InteliJ), Scala, Kafka and Spark
+
+You need also ad to your build.sbt:
+
+----
+libraryDependencies += "org.apache.kafka" % "kafka-streams" % "3.1.0"
+libraryDependencies += "org.apache.kafka" %% "kafka-streams-scala" % "3.1.0"
+libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.2.1"
+----
+
+*How to run?*
+
+Clone this repository, start kafka zookeeper, and kafka.
+
+----
+Open a command prompt and start the Zookeeper:
+
+C:\kafka_2.12-0.10.2.1>.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+----
+----
+Open a new command prompt and start the Apache Kafka:
+C:\kafka_2.12-0.10.2.1>.\bin\windows\kafka-server-start.bat .\config\server.properties
+----
+----
+To launch a Spark application in cluster mode:
+
+$ ./bin/spark-submit --class path.to.your.Class --master yarn --deploy-mode cluster [options] <app jar> [app options]
+----
